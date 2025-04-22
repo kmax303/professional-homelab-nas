@@ -5,3 +5,4 @@ This directory contains custom maintenance and automation scripts used within th
 Examples:
 - VM backup automation (e.g., full and incremental backups with `qemu-img`)
 - automatic synchronization of nextcloud files entered directly into the filesystem
+- list of banned ips based on fail2ban filters

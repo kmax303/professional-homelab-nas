@@ -1,0 +1,95 @@
+[DEFAULT]
+# Globalne ustawienia
+bantime = 24h
+findtime = 10m
+maxretry = 5
+backend = auto
+usedns = warn
+logencoding = utf-8
+ignoreip = 127.0.0.1/8 ::1
+
+# Wysyłka e-mail (opcjonalnie)
+#destemail = twój@email.pl
+#sender = fail2ban@maras.com.pl
+#mta = sendmail
+#action = %(action_mwl)s
+
+# Domyślna lokalizacja logów Nginx (dostosuj jeśli inne!)
+logpath = /var/log/nginx/access.log
+
+# Logowanie zbanowanych IP
+banaction = iptables-multiport
+banaction_allports = iptables-allports
+
+[nginx-http-auth]
+enabled = true
+filter = nginx-http-auth
+port = http,https
+logpath = /var/log/nginx/nextcloud.access.log
+maxretry = 3
+findtime = 5m
+bantime = 1d
+
+[nginx-badbots]
+enabled = true
+filter = nginx-badbots
+port = http,https
+logpath = /var/log/nginx/nextcloud.access.log
+maxretry = 1
+findtime = 1h
+bantime = 1d
+
+[nginx-bruteforce]
+enabled = true
+filter = nginx-bruteforce
+port = http,https
+logpath = /var/log/nginx/nextcloud.access.log
+maxretry = 5
+findtime = 10m
+bantime = 24h
+
+[nginx-botsearch]
+enabled = true
+filter = nginx-botsearch
+port = http,https
+logpath = /var/log/nginx/nextcloud.access.log
+maxretry = 1
+findtime = 10m
+bantime = 1d
+
+[nginx-limit-req]
+enabled = true
+filter = nginx-limit-req
+port = http,https
+logpath = /var/log/nginx/nextcloud.error.log
+maxretry = 10
+findtime = 1m
+bantime = 1h
+
+[nginx-bad-request]
+enabled = true
+filter = nginx-bad-request
+port = http,https
+logpath = /var/log/nginx/nextcloud.error.log
+maxretry = 5
+findtime = 10m
+bantime = 12h
+
+[nginx-suspicious-ua]
+enabled = true
+port = http,https
+filter = nginx-suspicious-ua
+logpath = /var/log/nginx/nextcloud.access.log
+findtime = 5m
+maxretry = 1
+bantime = 12h
+action = iptables[name=SuspiciousUA, port=http, protocol=tcp]
+
+[nginx-basic-auth_2]
+enabled = true
+filter = nginx-basic-auth_2
+logpath = /var/log/nginx/nextcloud.access.log
+port = http,https
+maxretry = 20
+findtime = 1m
+bantime = 1d
