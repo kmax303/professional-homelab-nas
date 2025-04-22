@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  jellyfin:
+    image: jellyfin/jellyfin:latest
+    container_name: jellyfin
+    network_mode: host  # umożliwia dostęp przez np. http://192.168.1.100:8096
+    volumes:
+      - /opt/docker/volumes/jellyfin/config:/config
+      - /opt/docker/volumes/jellyfin/cache:/cache
+      - /mnt/multimedia:/media:ro
+    environment:
+      - TZ=Europe/Warsaw
+      - JELLYFIN_PublishedServerUrl=http://192.168.1.100:8096
+    restart: unless-stopped
+

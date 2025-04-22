@@ -1,0 +1,18 @@
+services:
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    restart: unless-stopped
+    ports:
+      - "9000:9000"  # http
+      - "8000:8000"  # Agent
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /opt/docker/volumes/portainer:/data
+    networks:
+      - shared_network
+
+networks:
+  shared_network:
+    external: true
+

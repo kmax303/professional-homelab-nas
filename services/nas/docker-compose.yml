@@ -1,0 +1,70 @@
+services:
+  mariadb:
+    image: mariadb:10.11
+    container_name: mariadb
+    restart: unless-stopped
+    volumes:
+      - /opt/docker/volumes/mariadb:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    networks:
+      - shared_network
+
+  redis:
+    image: redis:alpine
+    container_name: redis
+    restart: unless-stopped
+    volumes:
+      - /opt/docker/volumes/redis:/data
+    networks:
+      - shared_network
+
+  nextcloud:
+    image: nextcloud:apache
+    container_name: nextcloud
+    restart: unless-stopped
+    ports:
+      - "${NEXTCLOUD_PORT}:80"
+    volumes:
+      - /opt/docker/volumes/nextcloud:/var/www/html
+      - /opt/docker/volumes/nextcloud/apache:/etc/apache2
+      - /mnt/nas_data:/var/www/html/data
+    environment:
+      MYSQL_HOST: mariadb
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      REDIS_HOST: redis
+      NEXTCLOUD_ADMIN_USER: ${NEXTCLOUD_ADMIN_USER}
+      NEXTCLOUD_ADMIN_PASSWORD: ${NEXTCLOUD_ADMIN_PASSWORD}
+      PHP_UPLOAD_LIMIT: 2G
+      PHP_MEMORY_LIMIT: 512M
+      PHP_POST_MAX_SIZE: 2G
+    depends_on:
+      - mariadb
+      - redis
+    networks:
+      - shared_network
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    restart: unless-stopped
+    ports:
+      - "${PMA_PORT}:80"
+    environment:
+      PMA_HOST: mariadb
+      #PMA_USER: ${MYSQL_USER}
+      #PMA_PASSWORD: ${MYSQL_PASSWORD}
+    depends_on:
+      - mariadb
+    networks:
+      - shared_network
+
+networks:
+  shared_network:
+    external: true
+
