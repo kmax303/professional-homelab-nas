@@ -4,5 +4,4 @@ This directory contains custom maintenance and automation scripts used within th
 
 Examples:
 - VM backup automation (e.g., full and incremental backups with `qemu-img`)
-- Container management scripts (restart, health checks)
-- System cleanup and maintenance tasks
+- automatic synchronization of nextcloud files entered directly into the filesystem
