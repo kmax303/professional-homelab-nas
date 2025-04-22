@@ -13,7 +13,6 @@ __pycache__/
 *.bak
 
 # Docker volumes / data
-volumes/*
 !volumes/.gitkeep
 
 # Backup files
@@ -28,5 +27,4 @@ volumes/*
 *.code-workspace
 
 # Misc
-*.env
 *.secret
