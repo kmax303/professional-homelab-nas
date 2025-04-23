@@ -1,11 +1,16 @@
-# Diagrams
+# Diagrams Directory
 
-This subdirectory contains all architecture, network, and service topology diagrams used in the documentation.
+This directory contains all the diagrams to visualize the infrastructure and services in the project.
 
-Typical diagram types:
-- High-level architecture (physical → virtual → container layers)
-- Docker service interconnections
-- VPN and reverse proxy flows
-- Backup flowcharts
+## Subdirectories
 
-Formats include PNG, SVG, and source files (e.g., `.drawio`, `.png`).
+- **`architecture/`**: Overall system architecture diagrams.
+- **`network/`**: Diagrams for network setup and VPN.
+- **`services/`**: Diagrams for Docker Compose services.
+- **`security/`**: Diagrams for security mechanisms (e.g., Fail2Ban, VPN, SSL).
+- **`backup/`**: Diagrams for backup strategies.
+
+## Examples
+
+![Overall Architecture](diagrams/architecture/Overall_Architecture.png)
+![Network Architecture](diagrams/network/network-architecture.png)
