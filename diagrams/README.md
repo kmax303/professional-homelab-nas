@@ -9,8 +9,3 @@ This directory contains all the diagrams to visualize the infrastructure and ser
 - **`services/`**: Diagrams for Docker Compose services.
 - **`security/`**: Diagrams for security mechanisms (e.g., Fail2Ban, VPN, SSL).
 - **`backup/`**: Diagrams for backup strategies.
-
-## Examples
-
-![Overall Architecture](diagrams/architecture/overall_architecture.png)
-![Network Architecture](/network/network-architecture.png)
