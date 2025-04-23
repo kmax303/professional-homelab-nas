@@ -12,5 +12,5 @@ This directory contains all the diagrams to visualize the infrastructure and ser
 
 ## Examples
 
-![Overall Architecture](professional-homelab-nas/diagrams/architecture/Overall_Architecture.png)
+![Overall Architecture](diagrams/architecture/Overall_Architecture.png)
 ![Network Architecture](/network/network-architecture.png)
