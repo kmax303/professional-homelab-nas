@@ -12,16 +12,19 @@ All services run in Docker containers on the **Ubuntu Server Virtual Machine**. 
 
 ## 2. Directory Structure
 
+```text
 /opt/docker/
-├── scripts/              # Helper and maintenance scripts
-├── services/             # Docker Compose files grouped by module
-│   ├── nas/              # Nextcloud, MariaDB, Redis
-│   ├── monitoring/       # Prometheus, Grafana, cAdvisor
-│   ├── multimedia/       # Jellyfin and related tools
-│   ├── portainer/        # Portainer CE (UI for Docker)
-│   └── maintenance/      # Auto updates, backups, Watchtower
-├── volumes/              # Bind mounts for persistent container data
-└── .env                  # Shared environment variables for Docker
+├── scripts/               # Helper and maintenance scripts
+├── services/              # Docker Compose files grouped by module
+│   ├── nas/               # Nextcloud, MariaDB, Redis
+│   ├── monitoring/        # Prometheus, Grafana, cAdvisor
+│   ├── multimedia/        # Jellyfin and related tools
+│   ├── portainer/         # Portainer CE (UI for Docker)
+│   └── maintenance/       # Auto updates, backups, Watchtower
+├── volumes/               # Bind mounts for persistent container data
+└── .env                   # Shared environment variables for Docker
+```
+
 
 
 Each subdirectory under `services/` contains:
