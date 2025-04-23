@@ -35,14 +35,16 @@ The infrastructure is composed of three main layers:
 
 ## 3. Public Routing Flow
 
-User Browser
+<pre> 
+  User Browser
     │
     ▼
-VPS (Nginx Reverse Proxy + Fail2Ban)
+  VPS (Nginx Reverse Proxy + Fail2Ban)
     │
     │ VPN Tunnel (WireGuard)
     ▼
-Virtual Machine (Dockerized Services)
+  Virtual Machine (Dockerized Services)
+</pre>
 
 
 - External users connect to `https://domain.com/<service>`
